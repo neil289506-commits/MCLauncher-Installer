@@ -1,0 +1,25 @@
+[package]
+name = "mc_launcher_installer"
+version = "0.1.0"
+edition = "2021"
+authors = ["Neil"]
+description = "Minecraft Launcher Installer - a one-click installer for Minecraft launchers"
+
+[dependencies]
+eframe = "0.29"
+egui = "0.29"
+image = { version = "0.25", default-features = false, features = ["png"] }
+open = "5"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.52"
+
+[target.'cfg(windows)'.build-dependencies]
+winres = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+panic = "abort"
+codegen-units = 1
